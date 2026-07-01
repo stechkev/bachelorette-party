@@ -1,0 +1,182 @@
+/* Custom styles for Annah's Last Rodeo (layered on top of Phantom's main.css) */
+
+/* Content image treatment: scale the image to fill, cap the width, and center.
+   Matches the home-page invitation, applied to every content image. */
+#main .inner .image.framed {
+	display: block;
+	max-width: 28rem;
+	margin: 0 auto 2rem auto;
+}
+
+	#main .inner .image.framed img {
+		width: 100%;
+	}
+
+/* Sparse, organic wavy fine lines in the invitation's pink (#e897a7).
+   Placed on #wrapper (not body) so it dims together with the content when the
+   menu opens; min-height keeps it covering the viewport on short pages. */
+#wrapper {
+	min-height: 100vh;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='900'%3E%3Cg fill='none' stroke='%23e897a7' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M60 120 Q160 80 260 120 Q360 160 460 120 Q560 80 660 120'/%3E%3Cpath d='M820 96 Q900 66 980 96 Q1060 126 1140 96'/%3E%3Cpath d='M120 300 Q220 252 320 300 Q420 348 520 300 Q620 252 720 300 Q820 348 920 300'/%3E%3Cpath d='M980 372 Q1050 344 1120 372'/%3E%3Cpath d='M40 520 Q140 472 240 520 Q340 568 440 520'/%3E%3Cpath d='M600 560 Q700 522 800 560 Q900 598 1000 560 Q1100 522 1180 560'/%3E%3Cpath d='M200 700 Q300 662 400 700 Q500 738 600 700'/%3E%3Cpath d='M760 764 Q860 724 960 764 Q1060 804 1160 764'/%3E%3Cpath d='M90 858 Q190 826 290 858'/%3E%3Cpath d='M500 170 Q560 150 620 170'/%3E%3C/g%3E%3C/svg%3E");
+	background-repeat: repeat;
+	background-attachment: fixed;
+}
+
+/* Sub-pages only: a centered tan band (the 68em content column) masks the
+   squiggle behind header + main as one continuous block, with the side edges
+   feathered — the tan fades to transparent within the column's padding so the
+   squiggle gently bleeds in instead of meeting a hard line. Home stays full-bleed. */
+body:not(.home) #header,
+body:not(.home) #main {
+	background-image: linear-gradient(to right,
+		rgba(246, 240, 228, 0) calc(50% - 34em),
+		#f6f0e4 calc(50% - 31.5em),
+		#f6f0e4 calc(50% + 31.5em),
+		rgba(246, 240, 228, 0) calc(50% + 34em));
+}
+
+/* Recolor the slide-in menu away from grey to a warm deep wine.
+   (Only the background — the palette already sets the text to the light tan.)
+   Tan text ~12:1 and the pink hover ~5.6:1 on this background, both AA-pass. */
+#menu {
+	background: #4a1f2e;
+}
+
+/* Back-to-top button: hidden until you scroll down, then fades in bottom-right. */
+#scroll-top {
+	position: fixed;
+	right: 1.5rem;
+	bottom: 1.5rem;
+	width: 2.75rem;
+	height: 2.75rem;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background-color: #f2849e;
+	color: #ffffff !important;
+	box-shadow: none !important;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(0.5rem);
+	transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out, transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+	z-index: 10000;
+}
+
+	/* Pin the stroke to white so Phantom's button :hover/:active color
+	   changes (which use currentColor) can't recolor the arrow. */
+	#scroll-top svg {
+		width: 1.1rem;
+		height: 1.1rem;
+		display: block;
+		stroke: #ffffff;
+	}
+
+	#scroll-top.visible {
+		opacity: 1;
+		visibility: visible;
+		transform: translateY(0);
+	}
+
+	/* Only apply hover on devices that truly hover (mouse), so the color
+	   doesn't stick after a tap on touchscreens. */
+	@media (hover: hover) {
+		#scroll-top:hover {
+			background-color: #ee5f81;
+		}
+	}
+
+/* Tile buttons: a dark radial scrim behind the text on the revealed
+   (hover / touch) state keeps the title + sub-text legible over the photos.
+   (No text-shadow — the scrim carries the contrast, cleaner look.) */
+.tiles article:hover > a,
+body.is-touch .tiles article > a {
+	background-image: radial-gradient(ellipse at center,
+		rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.22) 50%, rgba(0, 0, 0, 0) 78%);
+}
+
+/* Itinerary schedule: time column on the left, event on the right. */
+ul.schedule {
+	list-style: none;
+	margin: 0 0 2rem 0;
+	padding: 0;
+}
+
+	ul.schedule li {
+		display: flex;
+		gap: 1.25rem;
+		padding: 0.7rem 0;
+		border-top: solid 1px rgba(88, 88, 88, 0.18);
+	}
+
+	ul.schedule li:first-child {
+		border-top: 0;
+	}
+
+	ul.schedule .time {
+		flex: 0 0 7.5rem;
+		white-space: nowrap;
+		text-align: right;
+		font-weight: 700;
+		color: #a60f2d;
+	}
+
+	ul.schedule .event {
+		flex: 1 1 auto;
+	}
+
+	@media screen and (max-width: 480px) {
+		ul.schedule .time {
+			flex-basis: 6rem;
+		}
+	}
+
+.signoff {
+	text-align: center;
+	color: #a60f2d;
+	font-size: 1.15rem;
+}
+
+/* Remove the default faint white "X" overlay Phantom draws on each tile image. */
+.tiles article > .image:after {
+	display: none;
+}
+
+/* Maid of Honor badge overlaid on the Cowgirls photo, bottom-left, leaning left. */
+.moh-photo {
+	position: relative;
+	display: block;
+}
+
+	.moh-photo .moh-badge {
+		position: absolute;
+		left: 6%;
+		bottom: 6%;
+		width: 25% !important;
+		height: auto !important;
+		transform: rotate(-20deg);
+		pointer-events: none;
+	}
+
+/* Secret button (home page) — a faint, findable easter-egg hotspot bottom-left.
+   Placeholder: href="#" for now; set the real destination/behavior later. */
+#secret {
+	position: fixed;
+	left: 1rem;
+	bottom: 1rem;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	border-bottom: 0;
+	background-color: #b01030;
+	opacity: 0.1;
+	transition: opacity 0.2s ease;
+	z-index: 10000;
+}
+
+	#secret:hover {
+		opacity: 0.55;
+	}

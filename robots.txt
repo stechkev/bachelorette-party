@@ -1,0 +1,3 @@
+# Private site — keep crawlers out.
+User-agent: *
+Disallow: /

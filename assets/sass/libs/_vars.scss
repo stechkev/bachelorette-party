@@ -1,0 +1,52 @@
+// Misc.
+	$misc: (
+		z-index-base:		10000
+	);
+
+// Duration.
+	$duration: (
+		menu:				0.45s,
+		transition:			0.2s
+	);
+
+// Size.
+	$size: (
+		border-radius:		4px,
+		border-width:		1px,
+		element-height:		3em,
+		element-margin:		2em,
+		gutter:				2.5em,
+		field-gutter:		2em,
+		inner:				68em,
+		menu:				22em
+	);
+
+// Font.
+	$font: (
+		family:				('Source Sans Pro', Helvetica, sans-serif),
+		family-fixed:		('Courier New', monospace),
+		weight:				300,
+		weight-bold:		900,
+		weight-bold-alt:	700,
+		letter-spacing:		0.35em,
+		letter-spacing-alt:	-0.035em
+	);
+
+// Palette.
+	// Light-touch warm theme: tan background, unified pink/rose tile accents,
+	// signature pink (accent1) kept for the link/button hover.
+	$palette: (
+		bg:					#f6f0e4,
+		bg-accent:			#333333,
+		bg-alt:				#efe7d6,
+		fg:					#585858,
+		fg-accent:			#ffffff,
+		border:				#c9c9c9,
+		border-bg:			rgba(144,144,144,0.075),
+		accent1:			#f2849e,
+		accent2:			#f29c8d,
+		accent3:			#e98aa8,
+		accent4:			#db7aa0,
+		accent5:			#f0a3ad,
+		accent6:			#ec8f97,
+	);

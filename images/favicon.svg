@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Cowgirl boot — Annah's Last Rodeo -->
+  <g transform="translate(-8 -3)">
+    <!-- boot body -->
+    <path fill="#c2173c" d="M21 9 H41 V41 C47 41 54 45 60 51 Q63 53 60 56 V58 H21 Z"/>
+    <!-- sole + heel (darker) -->
+    <path fill="#7d0c22" d="M21 56 H60 V58 H21 Z M21 58 H30 V62 H21 Z"/>
+    <!-- top cuff band -->
+    <rect x="21" y="9" width="20" height="6" fill="#e0457b"/>
+    <!-- star on the shaft -->
+    <path fill="#f6d2dc" d="M31 24 l1.6 3.4 3.7 .4 -2.8 2.5 .8 3.6 -3.3 -1.9 -3.3 1.9 .8 -3.6 -2.8 -2.5 3.7 -.4 Z"/>
+  </g>
+</svg>
